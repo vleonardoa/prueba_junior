@@ -67,12 +67,6 @@ Route::group(['prefix' => 'admin','middleware' => ['role:Admin|Superadmin|Develo
  * Rutas web
  */
 Route::group(['prefix' => ''], function () {
-
-
-    Route::get('/', [App\Http\Controllers\UmlController::class,'index'])->name('index');
-    Route::get('home', [App\Http\Controllers\UmlController::class,'index'])->name('home');
-
-
     Route::get('about', [HomeController::class,'about'])->name('about');
     Route::get('contact', [HomeController::class,'contact'])->name('contact');
     Route::get('cambio/idioma/{lang}', [HomeController::class,'cambioIdioma'])
@@ -85,6 +79,10 @@ Route::group(['prefix' => ''], function () {
 });
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/', [App\Http\Controllers\UmlController::class,'index'])->name('index');
+    Route::get('home', [App\Http\Controllers\UmlController::class,'index'])->name('home');
+
     Route::resource('estados', App\Http\Controllers\EstadoController::class);
     Route::resource('modelos', App\Http\Controllers\ModeloController::class);
     Route::resource('marcas', App\Http\Controllers\MarcaController::class);

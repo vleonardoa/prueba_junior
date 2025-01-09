@@ -233,7 +233,7 @@ class OptionsTableSeeder extends Seeder
                     'id' => 14,
                     'option_id' => 13,
                     'nombre' => 'Usuarios',
-                    'ruta' => 'admin.users.index',
+                    'ruta' => 'users.index',
                     'descripcion' => NULL,
                     'icono_l' => 'fa-user',
                     'icono_r' => NULL,
