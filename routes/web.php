@@ -47,15 +47,6 @@ Route::group(['prefix' => 'admin','middleware' => ['role:Admin|Superadmin|Develo
 
     });
 
-
-
-    Route::get('profile/business', [BusinessProfileController::class,'index'])->name('profile.business');
-    Route::post('profile/business', [BusinessProfileController::class,'store'])->name('profile.business.store');
-
-    Route::get('profile', [ProfileController::class,'index'])->name('profile');
-    Route::patch('profile/{user}', [ProfileController::class,'update'])->name('profile.update');
-    Route::post('profile/{user}/edit/avatar', [ProfileController::class,'editAvatar'])->name('profile.edit.avatar');
-
     Route::resource('users', UserController::class);
     Route::get('user/{user}/menu', [UserController::class,'menu'])->name('user.menu');;
     Route::patch('user/menu/{user}', [UserController::class,'menuStore'])->name('users.menuStore');
@@ -78,10 +69,9 @@ Route::group(['prefix' => 'admin','middleware' => ['role:Admin|Superadmin|Develo
 Route::group(['prefix' => ''], function () {
 
 
-    Route::get('/', [HomeAdminController::class,'index'])->name('index');
-    Route::get('home', [HomeAdminController::class,'index'])->name('home');
-//    Route::get('/', [HomeController::class,'index'])->name('index');
-//    Route::get('home', [HomeController::class,'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\UmlController::class,'index'])->name('index');
+    Route::get('home', [App\Http\Controllers\UmlController::class,'index'])->name('home');
+
 
     Route::get('about', [HomeController::class,'about'])->name('about');
     Route::get('contact', [HomeController::class,'contact'])->name('contact');
